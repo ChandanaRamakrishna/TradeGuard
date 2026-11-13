@@ -1,0 +1,16 @@
+pandas>=2.2
+numpy>=1.26
+scipy>=1.12
+streamlit>=1.35
+python-dotenv>=1.0
+langchain>=0.2
+langchain-core>=0.2
+langgraph>=0.2
+langchain-groq>=0.1
+chromadb>=0.5
+sentence-transformers>=3.0
+mcp[cli]>=1.0,<2.0
+pytest>=8.0
+langchain-chroma>=0.1
+langchain-huggingface>=0.0.3
+langchain-text-splitters>=0.2

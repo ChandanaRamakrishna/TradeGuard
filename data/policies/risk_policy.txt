@@ -1,0 +1,32 @@
+TRADEGUARD SAMPLE RISK POLICY
+Document type: Synthetic demonstration policy
+Version: 1.0
+Effective date: 2026-01-01
+IMPORTANT: This is an illustrative policy for a software prototype. It is not a real bank policy or regulatory guidance.
+
+1. Position limits
+Each instrument has a configured position risk limit in the trading_positions.csv file.
+Utilization is position market value divided by the configured limit.
+Normal: utilization below 90%.
+Warning: utilization from 90% through 100%, inclusive.
+Critical: utilization above 100%.
+A critical classification is a trigger for analyst review, not an automatic trading restriction.
+
+2. Concentration monitoring
+Sector concentration is sector market value divided by total portfolio market value.
+For this prototype, flag a sector when its share is greater than 40%.
+Concentration is a monitoring indicator and does not by itself prove a limit breach.
+
+3. Value at Risk
+The prototype reports one-day historical VaR at 95% confidence using the 5th percentile of simulated portfolio daily P&L.
+VaR is a model estimate, not a maximum possible loss. Historical/synthetic VaR does not predict future losses.
+
+4. Escalation and human review
+Critical alerts should be prepared for review by a risk analyst.
+The agent may summarize evidence and recommend review. It must not approve escalation or execute trades.
+An authorized human reviewer records approve or reject with a comment.
+
+5. Evidence and auditability
+Risk amounts must come from deterministic calculation tools.
+The language model may explain verified outputs but must not invent positions, limits, returns, or policy thresholds.
+If evidence is unavailable, the system must state that limitation.

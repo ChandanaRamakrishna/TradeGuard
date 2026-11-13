@@ -1,0 +1,233 @@
+{
+  "evaluation_type": "deterministic agent routing and evidence evaluation",
+  "cases": 9,
+  "metrics": {
+    "tool_selection_accuracy": {
+      "score": 1.0,
+      "passed": 9,
+      "total": 9,
+      "definition": "Exact ordered match of actual recorded tool calls to the golden sequence."
+    },
+    "numerical_accuracy": {
+      "score": 1.0,
+      "passed": 6,
+      "total": 6,
+      "definition": "Expected deterministic outputs compared with per-value tolerances."
+    },
+    "groundedness": {
+      "evidence_provenance_coverage": 1.0,
+      "passed": 9,
+      "total": 9,
+      "definition": "Structural check that calculation evidence names a successful deterministic tool and retrieved policy chunks have source attribution.",
+      "limitation": "This is not semantic groundedness or an LLM hallucination evaluation."
+    },
+    "task_completion": {
+      "rate": 1.0,
+      "passed": 9,
+      "total": 9,
+      "definition": "All requested output sections declared by each golden case are present."
+    }
+  },
+  "llm_evaluation": "Not performed; this evaluation disables LLM calls and does not claim hallucination testing.",
+  "results": [
+    {
+      "id": "G01",
+      "question": "What is Infosys market value and limit utilization?",
+      "expected_tools": [
+        "lookup_position",
+        "check_limit_breaches"
+      ],
+      "actual_tools": [
+        "lookup_position",
+        "check_limit_breaches"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [
+        {
+          "path": "position.position_value",
+          "value": 1800000,
+          "tolerance": 0.01,
+          "actual": 1800000,
+          "passed": true
+        },
+        {
+          "path": "breach.utilization",
+          "value": 1.2,
+          "tolerance": 1e-06,
+          "actual": 1.2,
+          "passed": true
+        }
+      ],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G02",
+      "question": "What is total portfolio exposure?",
+      "expected_tools": [
+        "calculate_exposure"
+      ],
+      "actual_tools": [
+        "calculate_exposure"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [
+        {
+          "path": "exposure.total_exposure",
+          "value": 8070000,
+          "tolerance": 0.01,
+          "actual": 8070000.0,
+          "passed": true
+        }
+      ],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G03",
+      "question": "Which positions are over their configured limits?",
+      "expected_tools": [
+        "check_limit_breaches"
+      ],
+      "actual_tools": [
+        "check_limit_breaches"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G04",
+      "question": "What is the 95% one-day portfolio VaR?",
+      "expected_tools": [
+        "calculate_historical_var"
+      ],
+      "actual_tools": [
+        "calculate_historical_var"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [
+        {
+          "path": "var.var",
+          "value": 75994.1055465951,
+          "tolerance": 0.01,
+          "actual": 75994.1055465951,
+          "passed": true
+        }
+      ],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G05",
+      "question": "Which sectors exceed the concentration threshold?",
+      "expected_tools": [
+        "check_concentration"
+      ],
+      "actual_tools": [
+        "check_concentration"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G06",
+      "question": "Estimate portfolio P&L under a 5% market drop.",
+      "expected_tools": [
+        "run_stress_test"
+      ],
+      "actual_tools": [
+        "run_stress_test"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [
+        {
+          "path": "stress.estimated_portfolio_pnl",
+          "value": -403500,
+          "tolerance": 0.01,
+          "actual": -403500.0,
+          "passed": true
+        }
+      ],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G07",
+      "question": "What does the policy say about critical alert escalation?",
+      "expected_tools": [
+        "retrieve_policy"
+      ],
+      "actual_tools": [
+        "retrieve_policy"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": [
+        "data/policies/risk_policy.txt"
+      ]
+    },
+    {
+      "id": "G08",
+      "question": "Give me an overall portfolio risk summary.",
+      "expected_tools": [
+        "calculate_exposure",
+        "check_limit_breaches",
+        "calculate_historical_var"
+      ],
+      "actual_tools": [
+        "calculate_exposure",
+        "check_limit_breaches",
+        "calculate_historical_var"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    },
+    {
+      "id": "G09",
+      "question": "How many TCS shares are in the position?",
+      "expected_tools": [
+        "lookup_position"
+      ],
+      "actual_tools": [
+        "lookup_position"
+      ],
+      "tool_selection_passed": true,
+      "numeric_checks": [
+        {
+          "path": "position.quantity",
+          "value": 400,
+          "tolerance": 0.01,
+          "actual": 400,
+          "passed": true
+        }
+      ],
+      "task_completion_passed": true,
+      "missing_outputs": [],
+      "evidence_provenance_passed": true,
+      "policy_sources": []
+    }
+  ]
+}

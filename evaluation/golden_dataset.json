@@ -1,0 +1,73 @@
+[
+  {
+    "id": "G01",
+    "question": "What is Infosys market value and limit utilization?",
+    "expected_tools": ["lookup_position", "check_limit_breaches"],
+    "required_outputs": ["position", "breach"],
+    "expected_numeric": [
+      {"path": "position.position_value", "value": 1800000, "tolerance": 0.01},
+      {"path": "breach.utilization", "value": 1.2, "tolerance": 0.000001}
+    ]
+  },
+  {
+    "id": "G02",
+    "question": "What is total portfolio exposure?",
+    "expected_tools": ["calculate_exposure"],
+    "required_outputs": ["exposure"],
+    "expected_numeric": [
+      {"path": "exposure.total_exposure", "value": 8070000, "tolerance": 0.01}
+    ]
+  },
+  {
+    "id": "G03",
+    "question": "Which positions are over their configured limits?",
+    "expected_tools": ["check_limit_breaches"],
+    "required_outputs": ["breaches"]
+  },
+  {
+    "id": "G04",
+    "question": "What is the 95% one-day portfolio VaR?",
+    "expected_tools": ["calculate_historical_var"],
+    "required_outputs": ["var"],
+    "expected_numeric": [
+      {"path": "var.var", "value": 75994.1055465951, "tolerance": 0.01}
+    ]
+  },
+  {
+    "id": "G05",
+    "question": "Which sectors exceed the concentration threshold?",
+    "expected_tools": ["check_concentration"],
+    "required_outputs": ["concentration"]
+  },
+  {
+    "id": "G06",
+    "question": "Estimate portfolio P&L under a 5% market drop.",
+    "expected_tools": ["run_stress_test"],
+    "required_outputs": ["stress"],
+    "expected_numeric": [
+      {"path": "stress.estimated_portfolio_pnl", "value": -403500, "tolerance": 0.01}
+    ]
+  },
+  {
+    "id": "G07",
+    "question": "What does the policy say about critical alert escalation?",
+    "expected_tools": ["retrieve_policy"],
+    "required_outputs": ["policy"],
+    "requires_policy_source": true
+  },
+  {
+    "id": "G08",
+    "question": "Give me an overall portfolio risk summary.",
+    "expected_tools": ["calculate_exposure", "check_limit_breaches", "calculate_historical_var"],
+    "required_outputs": ["exposure", "breaches", "var"]
+  },
+  {
+    "id": "G09",
+    "question": "How many TCS shares are in the position?",
+    "expected_tools": ["lookup_position"],
+    "required_outputs": ["position"],
+    "expected_numeric": [
+      {"path": "position.quantity", "value": 400, "tolerance": 0.01}
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+instrument,quantity,purchase_price,current_price,risk_limit,sector,desk
+Reliance,1000,1800,2000,2500000,Energy,Equity
+Infosys,600,2500,3000,1500000,IT,Equity
+HDFC Bank,500,2200,2400,2000000,Banking,Equity
+TCS,400,2400,2500,1500000,IT,Equity
+ICICI Bank,700,1000,1100,1500000,Banking,Equity
+Wipro,800,450,500,1200000,IT,Equity
+Tata Motors,1000,800,900,1500000,Automobile,Equity
