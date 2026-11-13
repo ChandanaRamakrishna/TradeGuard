@@ -68,7 +68,7 @@ streamlit run dashboard/app.py
 
 ## Live Demo
 
-Coming soon.
+[Launch TradeGuard](https://tradeguard-zcsu9dgdapsouemdstuxmi.streamlit.app/)
 
 ## Disclaimer
 
