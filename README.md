@@ -18,7 +18,7 @@ Built using LangGraph, MCP, RAG, and Groq, it combines deterministic risk calcul
 ## Screenshots
 
 ### TradeGuard Dashboard
-![TradeGuard Dashboard](Screenshots/TradeGuard_Dashboard.png)
+![TradeGuard Dashboard](Screenshots/TraceGuard_Dashboard.png)
 
 ### AI-powered Risk Investigation
 ![AI Investigation](Screenshots/Agent_Investigation.png)
